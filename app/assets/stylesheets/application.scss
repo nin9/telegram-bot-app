@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+.chat-nav-link {
+  border: 1px solid lighten($primary, 40%);
+  background: lighten($primary, 45%);
+
+  & + .chat-nav-link {
+    border-top: 0 none;
+  }
+}

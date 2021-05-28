@@ -1,0 +1,52 @@
+<h1>
+  <%= "#{@chat.first_name} #{@chat.last_name}" %>
+</h1>
+
+<div class="row">
+  <div class="col-12 col-md-3">
+    <%= render partial: 'chats' %>
+  </div>
+
+  <div class="col">
+    <div class="chat">
+      <% @messages.each do |chat_message| %>
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+            <div class="col-auto text-center">
+              <h6> <%= chat_message.sender_first_name %> </h6>
+            </div>
+
+            <div class="col">
+              <div class="message-content">
+                <p class="mb-1" style="font-size: large; font-weight: bold;">
+                  <%= chat_message.body %>
+                </p>
+                <div class="text-right">
+                  <small>
+                    <%= chat_message.created_at.strftime('%d %b %I:%M %p') %>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <%= simple_form_for @message, remote: true do |form| %>
+      <div class="input-group mb-3">
+        <%= form.input :body, as: :string,
+                                 wrapper: false,
+                                 label: false,
+                                 input_html: {
+                                   class: 'chat-input'
+                                 } %>
+        <div class="input-group-append">
+          <%= form.submit "Send", class: 'btn btn-primary chat-input' %>
+        </div>
+      </div>
+
+      <%= form.input :chat_id, as: :hidden %>
+    <% end %>
+  </div>
+</div>
