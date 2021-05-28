@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ##Rails_app##
+  rails_app:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+  ##Telegram_bot##
+  telegram_bot:
+    build: .
+    command: bundle exec rake telegram:bot:poller
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
