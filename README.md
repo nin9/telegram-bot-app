@@ -38,6 +38,6 @@ docker-compose exec rails_app bundle exec rspec
 
 This app is run using docker in 2 modes rails server and telegram:bot:poller using this [gem](https://github.com/telegram-bot-rb/telegram-bot) (similar to sidekiq).
 
-The **TelegramWebhooksController** acts as a listner for bot.getUdpates using polling, and _message_ method is called each time a user sends a message to the bot.
+The **TelegramWebhooksController** acts as a listner for bot.getUpdates using polling, and _message_ method is called each time a user sends a message to the bot.
 
 Action cable is used to make messages appear in realtime.
