@@ -9,6 +9,8 @@ services:
       - ./:/app
     ports:
       - "3000:3000"
+    depends_on:
+      - redis
     env_file:
       - .env
 
@@ -18,5 +20,12 @@ services:
     command: bundle exec rake telegram:bot:poller
     volumes:
       - ./:/app
+    depends_on:
+      - redis
     env_file:
       - .env
+
+  ##Redis##
+  redis:
+    image: 'redis:6'
+    container_name: 'redis_1'

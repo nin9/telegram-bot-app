@@ -57,6 +57,7 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+gem 'redis'
 gem 'simple_form'
 gem 'telegram-bot'
 # gem 'telegram-bot-ruby'
