@@ -8,7 +8,7 @@
   </div>
 
   <div class="col">
-    <div class="chat">
+    <div class="chat" data-channel-subscribe="chat" data-chat-id="<%= @chat.id %>">
       <% @messages.each do |chat_message| %>
         <div class="chat-message-container">
           <div class="row no-gutters">
@@ -23,7 +23,7 @@
                 </p>
                 <div class="text-right">
                   <small>
-                    <%= chat_message.created_at.strftime('%d %b %I:%M %p') %>
+                    <%= chat_message.formatted_created_at %>
                   </small>
                 </div>
               </div>
@@ -49,4 +49,24 @@
       <%= form.input :chat_id, as: :hidden %>
     <% end %>
   </div>
+
+  <div class="d-none" data-role="message-template">
+  <div class="chat-message-container">
+    <div class="row no-gutters">
+      <div class="col-auto text-center">
+        <h6 data-role="user-name"></h6>
+      </div>
+
+      <div class="col">
+        <div class="message-content">
+          <p class="mb-1" style="font-size: large; font-weight: bold;" data-role="message-body"></p>
+
+          <div class="text-right">
+            <small data-role="message-date"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

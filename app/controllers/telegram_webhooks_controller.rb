@@ -6,6 +6,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
 
     chat = Chat.find_or_create_by!(telegram_id: chat_id, first_name: first_name, last_name: last_name)
     msg = message.dig('text')
-    chat.messages.create!(body: msg, sender_first_name: first_name)
+    new_message = chat.messages.create!(body: msg, sender_first_name: first_name)
+    ChatChannel.broadcast_to chat, new_message
   end
 end
