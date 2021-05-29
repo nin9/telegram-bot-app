@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
-  before_action :set_chat # , only: %i[index]
-
-  def index
-    @messages = @chat.messages
-  end
+  before_action :set_chat
 
   def create
     @message = Message.create!(chat: @chat, body: params.dig(:message, :body),

@@ -18,8 +18,4 @@ class ChatsController < ApplicationController
   def set_chat
     @chat = Chat.find(params[:id])
   end
-
-  def chat_params
-    params.require(:chat).permit(:message)
-  end
 end
